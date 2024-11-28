@@ -5,7 +5,6 @@ char * read_input();
 
 int 
 main() {
-
     printf("hello, world!\n");
 
     char *input = read_input();
@@ -31,7 +30,9 @@ read_input() {
     f_buff[fs+1] = 0;
 
     if(rb != fs) {
-        fprintf(stderr, "read %zu bytes of %ld of input.txt", rb, fs);
+        free(f_buff);
+        fprintf(stderr, "read %zu bytes of %ld of input.txt\n", rb, fs);
+        
         exit(-1);
     }
 
