@@ -1,4 +1,4 @@
-$today = Get-Date # -Date "2023-12-02"
+$today = Get-Date # -Date "2023-12-01"
 
 $day = ($today).ToString("dd")
 $dayInt = $today.Day

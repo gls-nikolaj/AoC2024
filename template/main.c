@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
+#include <stdlib.h>
 
 char * read_input();
 void part_1(char *input);
@@ -31,7 +32,7 @@ read_input() {
 
     size_t rb = fread(f_buff, sizeof(char), fs, h_input);
     if(rb != fs) {
-        free(f_buff);
+        //free(f_buff);
         fprintf(stderr, "WARN: read %zu bytes of %ld of input.txt\n", rb, fs);
         
         //exit(-1);
@@ -48,13 +49,16 @@ part_1(char *input) {
 
     long acc = 0;
     while(token) {
-        printf("%s\n-\n", token);
-        fflush(stdout);
+        // printf("%s\n-\n", token);
+        // fflush(stdout);
 
         token = strtok(NULL, "\n");
 
     }
     free(token);
+
+    int result = 0;
+    printf("Result is: %d\n", result);
 }
 
 void
@@ -65,11 +69,14 @@ part_2(char *input) {
 
     long acc = 0;
     while(token) {
-        printf("%s\n-\n", token);
-        fflush(stdout);
+        // printf("%s\n-\n", token);
+        // fflush(stdout);
 
         token = strtok(NULL, "\n");
 
     }
     free(token);
+
+    int result = 0;
+    printf("Result is: %d\n", result);
 }

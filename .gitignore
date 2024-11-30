@@ -1,3 +1,7 @@
 .zig-cache/
 zig-out/
 session.txt
+*.pdb
+*.exe
+input.txt
+input.example.txt
