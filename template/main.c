@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h>
+// #include <windows.h>
 #include <stdlib.h>
 
 char * read_input();

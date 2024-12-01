@@ -9,7 +9,10 @@
             "request": "launch",
             "program": "${fileDirname}/christmas.exe",
             "cwd": "${fileDirname}",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
+            "windows": {
+
+            },
             "args": [],
             "preLaunchTask": "build current file"
         }
