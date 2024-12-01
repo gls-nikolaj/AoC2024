@@ -11,7 +11,10 @@
             "cwd": "${fileDirname}",
             "type": "cppdbg",
             "windows": {
-
+                "program": "${fileDirname}/christmas.exe"
+            },
+            "linux": {
+                "program": "${fileDirname}/christmas"
             },
             "args": [],
             "preLaunchTask": "build current file"

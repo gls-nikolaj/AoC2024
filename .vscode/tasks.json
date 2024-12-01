@@ -4,9 +4,15 @@
         {
             "label": "build current file",
             "command": "zig",
-            "args": ["cc", "-o", "christmas.exe", "${file}"],
+            // "args": ["cc", "-o", "christmas.exe", "${file}"],
             "problemMatcher": "$zig",
             "type": "shell",
+            "windows": {
+                "args": ["cc", "-o", "christmas.exe", "../helpers/helpers.c", "${file}"]
+            },
+            "linux": {
+                "args": ["cc", "-o", "christmas", "../helpers/helpers.c", "${file}"]
+            },
             "group":{
                 "kind": "build",
                 "isDefault": true

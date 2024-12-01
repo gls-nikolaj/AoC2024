@@ -1,5 +1,6 @@
 {
     "C_Cpp.default.includePath": [
-        "C:\\Users\\20810494\\tools\\zig\\lib\\libc\\include\\any-windows-any"
+        "C:\\Users\\20810494\\tools\\zig\\lib\\libc\\include\\any-windows-any",
+        "~/code/AoC2024/helpers/"
     ]
 }
