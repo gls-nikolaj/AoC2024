@@ -3,12 +3,11 @@
 #include <string.h>
 #include "../helpers/helpers.h"
 
-char * read_input();
 void part_1(char *input);
 void part_2(char *input);
 
-int 
-main() {
+int main()
+{
     printf("merry christmas!\n");
 
     char *input1 = read_input();
@@ -21,63 +20,134 @@ main() {
     return 0;
 }
 
-char *
-read_input() {
-    FILE *h_input = fopen("input.txt", "r");
-    fseek(h_input, 0L, SEEK_END);
-    long fs = ftell(h_input);
-    fseek(h_input, 0L, SEEK_SET);
+/// @brief
+///    The levels are either all increasing or all decreasing.
+///    Any two adjacent levels differ by at least one and at most three.
+/// @param numbers
+/// @param len
+/// @return
+int is_good(int *numbers, int len)
+{
+    int incr = numbers[1] > numbers[0];
+    for (int i = 1; i < len; i++)
+    {
+        int cur = numbers[i];
+        int prev = numbers[i - 1];
+        if (incr && prev > cur)
+        {
+            return 0;
+        }
+        else if (!(incr) && cur > prev)
+        {
+            return 0;
+        }
 
-    char *f_buff = malloc(sizeof(char) * fs + 1);
-    memset(f_buff, 0, fs+1);
-
-    size_t rb = fread(f_buff, sizeof(char), fs, h_input);
-    if(rb != fs) {
-        //free(f_buff);
-        fprintf(stderr, "WARN: read %zu bytes of %ld of input.txt\n", rb, fs);
-        
-        //exit(-1);
+        int diff = abs(cur - prev);
+        if (diff < 1 || diff > 3)
+        {
+            return 0;
+        }
     }
 
-    return f_buff;
+    return 1;
 }
 
-void
-part_1(char *input) {
+void part_1(char *input)
+{
     printf("Part 1:\n");
 
-    char *token = strtok(input, "\n");
+    char *line = strtok(input, "\n");
 
-    long acc = 0;
-    while(token) {
-        // printf("%s\n-\n", token);
-        // fflush(stdout);
+    int goods = 0;
+    int bads = 0;
+    while (line)
+    {
+        int ni = 0;
+        int numbers[10];
+        int line_length = strlen(line);
+        char *numTok = strtok(line, " ");
 
-        token = strtok(NULL, "\n");
+        while (numTok)
+        {
+            numbers[ni++] = atoi(numTok);
+            numTok = strtok(NULL, " ");
+        }
 
+        if (is_good(numbers, ni))
+        {
+            goods++;
+        }
+        else
+        {
+            bads++;
+        }
+
+        line += line_length + 1;
+        line = strtok(line, "\n");
     }
-    free(token);
+    free(line);
 
-    int result = 0;
+    int result = goods;
     printf("Result is: %d\n", result);
 }
 
-void
-part_2(char *input) {
+int is_good_with_skip(int *numbers, int len)
+{
+
+    // if good it's good :)
+    if (is_good(numbers, len))
+        return 1;
+
+    int tmp[10];
+    int success = 1;
+    for (int skipper = 0; skipper < len; skipper++)
+    {
+        for(int i = 0, j = 0; i < len; i++) 
+        {
+            if(skipper == i) continue;
+
+            tmp[j++] = numbers[i];
+        }
+
+        if(is_good(tmp, len-1)) 
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+void part_2(char *input)
+{
     printf("Part 2:\n");
 
-    char *token = strtok(input, "\n");
+    char *line = strtok(input, "\n");
 
-    long acc = 0;
-    while(token) {
-        // printf("%s\n-\n", token);
-        // fflush(stdout);
+    int goods = 0;
+    while (line)
+    {
+        int ni = 0;
+        int numbers[10];
+        int line_length = strlen(line);
+        char *numTok = strtok(line, " ");
 
-        token = strtok(NULL, "\n");
+        while (numTok)
+        {
+            numbers[ni++] = atoi(numTok);
+            numTok = strtok(NULL, " ");
+        }
 
+        if (is_good_with_skip(numbers, ni))
+        {
+            goods++;
+        }
+
+        line += line_length + 1;
+        line = strtok(line, "\n");
     }
-    free(token);
+    free(line);
 
-    int result = 0;
+    int result = goods;
     printf("Result is: %d\n", result);
 }
