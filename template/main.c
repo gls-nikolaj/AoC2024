@@ -3,7 +3,6 @@
 #include <string.h>
 #include "../helpers/helpers.h"
 
-char * read_input();
 void part_1(char *input);
 void part_2(char *input);
 
@@ -21,42 +20,34 @@ main() {
     return 0;
 }
 
-char *
-read_input() {
-    FILE *h_input = fopen("input.txt", "r");
-    fseek(h_input, 0L, SEEK_END);
-    long fs = ftell(h_input);
-    fseek(h_input, 0L, SEEK_SET);
-
-    char *f_buff = malloc(sizeof(char) * fs + 1);
-    memset(f_buff, 0, fs+1);
-
-    size_t rb = fread(f_buff, sizeof(char), fs, h_input);
-    if(rb != fs) {
-        //free(f_buff);
-        fprintf(stderr, "WARN: read %zu bytes of %ld of input.txt\n", rb, fs);
-        
-        //exit(-1);
-    }
-
-    return f_buff;
-}
 
 void
 part_1(char *input) {
     printf("Part 1:\n");
 
-    char *token = strtok(input, "\n");
+    char *line = strtok(input, "\n");
 
-    long acc = 0;
-    while(token) {
-        // printf("%s\n-\n", token);
-        // fflush(stdout);
+    while (line) // iterate lines
+    {
+        int ni = 0;
+        int numbers[10]; // example: used to store numbers
 
-        token = strtok(NULL, "\n");
+        int line_length = strlen(line); // store for later
+        char *numTok = strtok(line, " "); // start tokenizing on " "
 
+        while (numTok) // iterate words in line
+        {
+            numbers[ni++] = atoi(numTok); // example: parse and store number
+
+            numTok = strtok(NULL, " "); // keep iterating inner loop
+        }
+
+
+        // Skip for strtok to continue working on lines again
+        line += line_length + 1;
+        line = strtok(line, "\n");
     }
-    free(token);
+    free(line);
 
     int result = 0;
     printf("Result is: %d\n", result);
@@ -66,17 +57,29 @@ void
 part_2(char *input) {
     printf("Part 2:\n");
 
-    char *token = strtok(input, "\n");
+    char *line = strtok(input, "\n");
 
-    long acc = 0;
-    while(token) {
-        // printf("%s\n-\n", token);
-        // fflush(stdout);
+    while (line) // iterate lines
+    {
+        int ni = 0;
+        int numbers[10]; // example: used to store numbers
 
-        token = strtok(NULL, "\n");
+        int line_length = strlen(line); // store for later
+        char *numTok = strtok(line, " "); // start tokenizing on " "
 
+        while (numTok) // iterate words in line
+        {
+            numbers[ni++] = atoi(numTok); // example: parse and store number
+
+            numTok = strtok(NULL, " "); // keep iterating inner loop
+        }
+
+
+        // Skip for strtok to continue working on lines again
+        line += line_length + 1;
+        line = strtok(line, "\n");
     }
-    free(token);
+    free(line);
 
     int result = 0;
     printf("Result is: %d\n", result);
