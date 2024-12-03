@@ -20,7 +20,7 @@ int main()
     return 0;
 }
 
-int 
+bool 
 is_num(char c)
 {
     return c >= '0' && c <= '9';
