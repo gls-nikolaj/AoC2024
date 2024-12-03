@@ -10,7 +10,7 @@ int
 main() {
     printf("merry christmas!\n");
 
-    char *input1 = read_input();
+    char *input1 = read_input("input.txt");
     char *input2 = malloc(sizeof(char) * strlen(input1));
     input2 = strdup(input1);
 

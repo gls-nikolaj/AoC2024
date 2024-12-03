@@ -3,8 +3,8 @@
 #include <string.h>
 
 char *
-read_input() {
-    FILE *h_input = fopen("input.txt", "r");
+read_input(const char *filename) {
+    FILE *h_input = fopen(filename, "r");
     fseek(h_input, 0L, SEEK_END);
     long fs = ftell(h_input);
     fseek(h_input, 0L, SEEK_SET);
