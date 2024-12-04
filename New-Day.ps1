@@ -14,4 +14,4 @@ if(!(Test-Path -Path $day -PathType Container)) {
     git add $day
 
 }
-Set-Location $day
+code .

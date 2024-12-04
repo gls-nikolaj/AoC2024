@@ -5,3 +5,4 @@ session.txt
 *.exe
 input.txt
 input.example.txt
+input.example[0123456789].txt

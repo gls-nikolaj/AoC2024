@@ -16,4 +16,5 @@ if [ ! -d "$day" ] ; then
     git add $day
 fi
 
-cd $day
+code .
+

@@ -57,30 +57,6 @@ void
 part_2(char *input) {
     printf("Part 2:\n");
 
-    char *line = strtok(input, "\n");
-
-    while (line) // iterate lines
-    {
-        int ni = 0;
-        int numbers[10]; // example: used to store numbers
-
-        int line_length = strlen(line); // store for later
-        char *numTok = strtok(line, " "); // start tokenizing on " "
-
-        while (numTok) // iterate words in line
-        {
-            numbers[ni++] = atoi(numTok); // example: parse and store number
-
-            numTok = strtok(NULL, " "); // keep iterating inner loop
-        }
-
-
-        // Skip for strtok to continue working on lines again
-        line += line_length + 1;
-        line = strtok(line, "\n");
-    }
-    free(line);
-
     int result = 0;
     printf("Result is: %d\n", result);
 }
