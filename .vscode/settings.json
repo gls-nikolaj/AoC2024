@@ -2,5 +2,8 @@
     "C_Cpp.default.includePath": [
         "C:\\Users\\20810494\\tools\\zig\\lib\\libc\\include\\any-windows-any",
         "~/code/AoC2024/helpers/"
-    ]
+    ],
+    "files.associations": {
+        "helpers.h": "c"
+    }
 }

@@ -35,7 +35,7 @@ char **
 read_input_lines(const char *filename)
 {
     char *input = read_input(filename);
-    char **lines = malloc(sizeof(char) * strlen(input));
+    char **lines = calloc(strlen(input), sizeof(char));
 
     int li = 0;
     char *il = strtok(input, "\n");
