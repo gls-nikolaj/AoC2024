@@ -8,5 +8,6 @@
 char *read_input(const char *filename);
 char **read_input_lines(const char *filename);
 int comp_int (const void * elem1, const void * elem2);
+int comp_node2 (const void * elem1, const void * elem2);
 
 #endif 

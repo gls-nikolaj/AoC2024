@@ -71,3 +71,27 @@ int comp_int(const void *elem1, const void *elem2)
         return -1;
     return 0;
 }
+
+
+struct node2
+{
+    int file_id;
+    int offset;
+    int size;
+} ;
+
+/// @brief Use with qsort
+/// @param elem1 
+/// @param elem2 
+/// @return 
+int comp_node2(const void *elem1, const void *elem2)
+{
+    struct node2 f = *((struct node2 *)elem1);
+    struct node2 s = *((struct node2 *)elem2);
+    if (f.offset > s.offset)
+        return 1;
+    if (f.offset < s.offset)
+        return -1;
+    return 0;
+}
+
